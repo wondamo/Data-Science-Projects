@@ -1,5 +1,5 @@
 # Data-Science-Projects
-This contains all the projects I will do till I get a Job, Beginner to Advanced
+This contains data science applications in the retail industry projects
 1. **Customer Churn Prediction**
 2. **Product Recommendation for Customers**
 3. **Demand Forecasting for retail products**
@@ -18,6 +18,8 @@ Here I worked with E Commerce Customer Dataset gotten from [Kaggle](https://www.
 * Finally, I built the model using Logistic Regression, KNN, Random Forest, Naive Bayes, and XGBoost
 
 ### Product Recommendation for Customers
+![image](https://editor.analyticsvidhya.com/uploads/88506recommendation%20system.png)
+Recommender systems in a very general way operate by suggesting the most likely thing a user want to receive next to a user. It helps companies in retaining customers on platforms, and increasing customer lifetime value. By looking at users history on your platform, you are able to profile them and give them recommendations based on that profile
 ### Demand Forecasting for retail products
 ...
 More projects will be added as time goes on
