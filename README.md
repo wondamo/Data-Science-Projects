@@ -19,6 +19,7 @@ Here I worked with E Commerce Customer Dataset gotten from [Kaggle](https://www.
 
 ### Product Recommendation for Customers
 ![image](https://editor.analyticsvidhya.com/uploads/88506recommendation%20system.png)
+![image](https://cdn.lynda.com/course/5028662/5028662-1555021422396-16x9.jpg)
 Recommender systems in a very general way operate by suggesting the most likely thing a user want to receive next to a user. It helps companies in retaining customers on platforms, and increasing customer lifetime value. By looking at users history on your platform, you are able to profile them and give them recommendations based on that profile
 ### Demand Forecasting for retail products
 ...
