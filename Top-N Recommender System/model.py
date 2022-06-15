@@ -9,6 +9,9 @@ mv = Movie()
 print("Loading Book ratings...")
 data = mv.load_movie_ratings()
 
+print("\nComputing movie popularity ranks so we can measure novelty later...")
+rankings = mv.getPopularityRanks()
+
 print("\nComputing item similarities so we can measure diversity later...")
 FullSet = data.build_full_trainset()
 sim_options = {'name': 'pearson_baseline', 'user_based': False}
@@ -75,5 +78,5 @@ print("\nUser coverage: ", Metrics.UserCoverage(topNPredicted, FullSet.n_users, 
 print("\nDiversity: ", Metrics.Diversity(topNPredicted, simAlgo))
 
 # Measure novelty (average popularity rank of recommendations):
-# print("\nNovelty (average popularity rank): ", Metrics.Novelty(topNPredicted, rankings))
+print("\nNovelty (average popularity rank): ", Metrics.Novelty(topNPredicted, rankings))
 

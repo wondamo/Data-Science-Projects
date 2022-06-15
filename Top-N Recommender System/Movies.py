@@ -26,7 +26,16 @@ class Movie:
         return ratingsDataset
     
     def getPopularityRanks(self):
-        pass
+        ratings = defaultdict(int)
+        rankings = defaultdict(int)
+        file = pd.read_csv(self.ratings_file)
+        for index, row in file.iterrows():
+            ratings[int(row['item_id'])] = +1
+
+        rank=1
+        for keys in sorted(ratings.items(), key=lambda x: x[1], reverse=True).keys():
+            rankings[keys]=rank
+            rank+=1
 
     def getmovieName(self, movieId):
         if movieId in self.movieID_to_name:

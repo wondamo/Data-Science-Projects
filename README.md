@@ -17,10 +17,24 @@ Here I worked with E Commerce Customer Dataset gotten from [Kaggle](https://www.
     * Imputing missing values
 * Finally, I built the model using Logistic Regression, KNN, Random Forest, Naive Bayes, and XGBoost
 
-### Product Recommendation for Customers
+### Top-N Recommender System
 <img src="https://editor.analyticsvidhya.com/uploads/88506recommendation%20system.png" width=307 height=165> <img src="https://cdn.lynda.com/course/5028662/5028662-1555021422396-16x9.jpg" width=307 height=165>
 
 Recommender systems in a very general way operate by suggesting the most likely thing a user want to receive next to a user. It helps companies in retaining customers on platforms, and increasing customer lifetime value. By looking at users history on your platform, you are able to profile them and give them recommendations based on that profile
+
+The dataset used for this project is gotten from [Kaggle](https://www.kaggle.com/datasets/dev0914sharma/dataset)
+* I built multiple recommender systems using different methods:
+    * Collaborative Filtering
+    * Matrix Factorization
+    * Deep Learning
+    * Hybrid
+* I evaluated all of them with:
+    * RMSE
+    * MAE
+    * Hit Rate
+    * Coverage, Diversity
+
+
 ### Demand Forecasting for retail products
 ...
 More projects will be added as time goes on
