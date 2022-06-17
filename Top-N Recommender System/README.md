@@ -1,4 +1,4 @@
-Recommender Systems have been popular recently, with the rise of online service platform.
+##Recommender Systems have been popular recently, with the rise of online service platform.
 Anyone providing an online service to you wants you to continue using their service, and one of the ways of doing that is recommending items that will keep you on their service.  
 In a non-technical manner, it is suggesting the most likely thing a user want to receive next.
 
@@ -9,7 +9,7 @@ Implicit: Collecting data from users behavior, and using it to indicate interest
 Explicit: Requires users to actively participate in data collection, by rating, liking or disliking a product/service.
 \nI am using explicit data for this project, which is users rating of the movies.
 
-Types of Recommender Systems
+### Types of Recommender Systems
 1. Content-Based Filtering  
 It works by using item features/attributes to recommend items similar to items a user has engaged with.
 Because the items in our dataset do not come with attributes, we will not use Content-Based Method
@@ -23,7 +23,7 @@ We have user-based and item-based Collaborative filtering methods. They both wor
 
 Recommender systems works by predicting users ratings, but the aim is to generate that top-N recommendations
 So there are different ways to evaluate recommender systems, and these different ways involves different spliting of the data.  
-Metrics for evaluating Recommender Systems
+### Metrics for evaluating Recommender Systems
 1. RMSE & MAE  
     These metrics evaluate the ratings predictions, and not the final top-N recommendations.
     Here we split the ratings data into train and test set, after training the model on the test set, we use 
