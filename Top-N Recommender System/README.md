@@ -1,12 +1,12 @@
 Recommender Systems have been popular recently, with the rise of online service platform.
 Anyone providing an online service to you wants you to continue using their service, and one of the ways of doing that is recommending items that will keep you on their service.
-\nIn a non-technical manner, it is suggesting the most likely thing a user want to receive next.
+\In a non-technical manner, it is suggesting the most likely thing a user want to receive next.
 
 Recommender Systems produce a finite set of recommendations, this finite set is called top-N recommendations.
 
 The data used for building recommender systems can implicit or explicit feedback.
-\nImplicit: Collecting data from users behavior, and using it to indicate interest, or disinterests.
-\nExplicit: Requires users to actively participate in data collection, by rating, liking or disliking a product/service.
+\Implicit: Collecting data from users behavior, and using it to indicate interest, or disinterests.
+\Explicit: Requires users to actively participate in data collection, by rating, liking or disliking a product/service.
 \nI am using explicit data for this project, which is users rating of the movies.
 
 Types of Recommender Systems
