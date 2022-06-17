@@ -22,7 +22,7 @@ We have user-based and item-based Collaborative filtering methods. They both wor
 4. Hybrid
 
 Recommender systems works by predicting users ratings, but the aim is to generate that top-N recommendations
-So there are different ways to evaluate recommender systems.
+So there are different ways to evaluate recommender systems, and these different ways involves different spliting of the data.  
 Metrics for evaluating Recommender Systems
 1. RMSE & MAE  
     These metrics evaluate the ratings predictions, and not the final top-N recommendations.
@@ -34,6 +34,6 @@ Metrics for evaluating Recommender Systems
     We use a method known as Leave One Out Cross validation to remove one item in the top-N recommendations of
     a user in the trainset and test our recommender systems ability to recommend that item in the test set.
     If the left out item is in the top-N recommendations, we consider that a hit.
-3. Coverage: % of items in the trainset, that the model recommends in test set
+3. Coverage:  Measures the percentage of items in the trainset, that the model recommends in test set
 4. Diversity: It measures the broadness of the recommended items, it is calculated by (1-A) where A is the average similarity between users recommendation
 5. Novelty: It is a measure of the popularity of the recommended items, it uses popularity rank of items and our dataset doesn't contain popularity ranks, so we won't use this metric.
