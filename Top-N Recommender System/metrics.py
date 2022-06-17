@@ -5,16 +5,16 @@ from collections import defaultdict
 
 class Metrics:
 
-    def MAE(predictions):
-        return accuracy.mae(predictions, verbose=False)
+    def MAE(prediction):
+        return accuracy.mae(prediction, verbose=False)
 
-    def RMSE(predictions):
-        return accuracy.rmse(predictions, verbose=False)
+    def RMSE(prediction):
+        return accuracy.rmse(prediction, verbose=False)
 
-    def GetTopN(predictions, n=10, minimumRating=4.0):
+    def GetTopN(prediction, n=10, minimumRating=4.0):
         topN = defaultdict(list)
 
-        for userID, movieID, actualRating, estimatedRating, _ in predictions:
+        for userID, movieID, actualRating, estimatedRating, _ in prediction:
             if (estimatedRating >= minimumRating):
                 topN[int(userID)].append((int(movieID), estimatedRating))
 
@@ -24,17 +24,17 @@ class Metrics:
 
         return topN
 
-    def HitRate(topNPredicted, leftOutPredictions):
+    def HitRate(topN, leftPredictions):
         hits = 0
         total = 0
 
         # For each left-out rating
-        for leftOut in leftOutPredictions:
+        for leftOut in leftPredictions:
             userID = leftOut[0]
             leftOutMovieID = leftOut[1]
             # Is it in the predicted top 10 for this user?
             hit = False
-            for movieID, predictedRating in topNPredicted[int(userID)]:
+            for movieID, predictedRating in topN[int(userID)]:
                 if (int(leftOutMovieID) == int(movieID)):
                     hit = True
                     break
@@ -46,17 +46,17 @@ class Metrics:
         # Compute overall precision
         return hits/total
 
-    def CumulativeHitRate(topNPredicted, leftOutPredictions, ratingCutoff=0):
+    def CumulativeHitRate(topN, leftPredictions, ratingCutoff=0):
         hits = 0
         total = 0
 
         # For each left-out rating
-        for userID, leftOutMovieID, actualRating, estimatedRating, _ in leftOutPredictions:
+        for userID, leftOutMovieID, actualRating, estimatedRating, _ in leftPredictions:
             # Only look at ability to recommend things the users actually liked...
             if (actualRating >= ratingCutoff):
                 # Is it in the predicted top 10 for this user?
                 hit = False
-                for movieID, predictedRating in topNPredicted[int(userID)]:
+                for movieID, predictedRating in topN[int(userID)]:
                     if (int(leftOutMovieID) == movieID):
                         hit = True
                         break
@@ -68,36 +68,15 @@ class Metrics:
         # Compute overall precision
         return hits/total
 
-    def RatingHitRate(topNPredicted, leftOutPredictions):
-        hits = defaultdict(float)
-        total = defaultdict(float)
-
-        # For each left-out rating
-        for userID, leftOutMovieID, actualRating, estimatedRating, _ in leftOutPredictions:
-            # Is it in the predicted top N for this user?
-            hit = False
-            for movieID, predictedRating in topNPredicted[int(userID)]:
-                if (int(leftOutMovieID) == movieID):
-                    hit = True
-                    break
-            if (hit) :
-                hits[actualRating] += 1
-
-            total[actualRating] += 1
-
-        # Compute overall precision
-        for rating in sorted(hits.keys()):
-            print (rating, hits[rating] / total[rating])
-
-    def AverageReciprocalHitRank(topNPredicted, leftOutPredictions):
+    def AverageReciprocalHitRank(topN, leftPredictions):
         summation = 0
         total = 0
         # For each left-out rating
-        for userID, leftOutMovieID, actualRating, estimatedRating, _ in leftOutPredictions:
+        for userID, leftOutMovieID, actualRating, estimatedRating, _ in leftPredictions:
             # Is it in the predicted top N for this user?
             hitRank = 0
             rank = 0
-            for movieID, predictedRating in topNPredicted[int(userID)]:
+            for movieID, predictedRating in topN[int(userID)]:
                 rank = rank + 1
                 if (int(leftOutMovieID) == movieID):
                     hitRank = rank
@@ -110,11 +89,11 @@ class Metrics:
         return summation / total
 
     # What percentage of users have at least one "good" recommendation
-    def UserCoverage(topNPredicted, numUsers, ratingThreshold=0):
+    def UserCoverage(topN, numUsers, ratingThreshold=0):
         hits = 0
-        for userID in topNPredicted.keys():
+        for userID in topN.keys():
             hit = False
-            for movieID, predictedRating in topNPredicted[userID]:
+            for movieID, predictedRating in topN[userID]:
                 if (predictedRating >= ratingThreshold):
                     hit = True
                     break
@@ -123,12 +102,12 @@ class Metrics:
 
         return hits / numUsers
 
-    def Diversity(topNPredicted, simsAlgo):
+    def Diversity(topN, simsAlgo):
         n = 0
         total = 0
         simsMatrix = simsAlgo.compute_similarities()
-        for userID in topNPredicted.keys():
-            pairs = itertools.combinations(topNPredicted[userID], 2)
+        for userID in topN.keys():
+            pairs = itertools.combinations(topN[userID], 2)
             for pair in pairs:
                 movie1 = pair[0][0]
                 movie2 = pair[1][0]
@@ -141,11 +120,11 @@ class Metrics:
         S = total / n
         return (1-S)
 
-    def Novelty(topNPredicted, rankings):
+    def Novelty(topN, rankings):
         n = 0
         total = 0
-        for userID in topNPredicted.keys():
-            for rating in topNPredicted[userID]:
+        for userID in topN.keys():
+            for rating in topN[userID]:
                 movieID = rating[0]
                 rank = rankings[movieID]
                 total += rank

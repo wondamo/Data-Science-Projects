@@ -6,8 +6,8 @@ from collections import defaultdict
 
 class Movie:
     # store the paths to the files
-    ratings_file = 'C:/Users/Wonder/Data-Science-Projects/Product Recommendation for Customers/data/Dataset.csv'
-    movie_file = 'C:/Users/Wonder/Data-Science-Projects/Product Recommendation for Customers/data/Movie_Id_Titles.csv'
+    ratings_file = 'C:/Users/Wonder/Data-Science-Projects/Top-N Recommender System/data/Dataset.csv'
+    movie_file = 'C:/Users/Wonder/Data-Science-Projects/Top-N Recommender System/data/Movie_Id_Titles.csv'
 
     def load_movie_ratings(self):
         self.movieID_to_name = {}
@@ -33,9 +33,10 @@ class Movie:
             ratings[int(row['item_id'])] = +1
 
         rank=1
-        for keys in sorted(ratings.items(), key=lambda x: x[1], reverse=True).keys():
+        for keys, ratings in sorted(ratings.items(), key=lambda x: x[1], reverse=True):
             rankings[keys]=rank
             rank+=1
+        return rankings
 
     def getmovieName(self, movieId):
         if movieId in self.movieID_to_name:

@@ -60,7 +60,7 @@ class MovieLens:
 
     def getPopularityRanks(self):
         ratings = defaultdict(int)
-        rankings = defaultdict(int)
+        ranks = defaultdict(int)
         with open(self.ratingsPath, newline='') as csvfile:
             ratingReader = csv.reader(csvfile)
             next(ratingReader)
@@ -69,9 +69,9 @@ class MovieLens:
                 ratings[movieID] += 1
         rank = 1
         for movieID, ratingCount in sorted(ratings.items(), key=lambda x: x[1], reverse=True):
-            rankings[movieID] = rank
+            ranks[movieID] = rank
             rank += 1
-        return rankings
+        return ranks
     
     def getGenres(self):
         genres = defaultdict(list)
