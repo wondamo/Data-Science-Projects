@@ -1,6 +1,6 @@
 Recommender Systems have been popular recently, with the rise of online service platform.
-Anyone providing an online service to you wants you to continue using their service, and one of the ways of doing that is recommending items that will keep you on their service.
-\In a non-technical manner, it is suggesting the most likely thing a user want to receive next.
+Anyone providing an online service to you wants you to continue using their service, and one of the ways of doing that is recommending items that will keep you on their service.  
+In a non-technical manner, it is suggesting the most likely thing a user want to receive next.
 
 Recommender Systems produce a finite set of recommendations, this finite set is called top-N recommendations.
 
