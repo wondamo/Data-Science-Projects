@@ -5,18 +5,18 @@ from collections import defaultdict
 
 class Metrics:
 
-    def MAE(prediction):
-        return accuracy.mae(prediction, verbose=False)
-
     def RMSE(prediction):
         return accuracy.rmse(prediction, verbose=False)
 
-    def GetTopN(prediction, n=10, minimumRating=4.0):
+    def MAE(prediction):
+        return accuracy.mae(prediction, verbose=False)
+
+    def Top_N(prediction, n=10, minRating=4.0):
         topN = defaultdict(list)
 
-        for userID, movieID, actualRating, estimatedRating, _ in prediction:
-            if (estimatedRating >= minimumRating):
-                topN[int(userID)].append((int(movieID), estimatedRating))
+        for userID, movieID, actual, estimated, _ in prediction:
+            if (estimated >= minRating):
+                topN[int(userID)].append((int(movieID), estimated))
 
         for userID, ratings in topN.items():
             ratings.sort(key=lambda x: x[1], reverse=True)
@@ -51,9 +51,9 @@ class Metrics:
         total = 0
 
         # For each left-out rating
-        for userID, leftOutMovieID, actualRating, estimatedRating, _ in leftPredictions:
+        for userID, leftOutMovieID, actual, estimated, _ in leftPredictions:
             # Only look at ability to recommend things the users actually liked...
-            if (actualRating >= ratingCutoff):
+            if (actual >= ratingCutoff):
                 # Is it in the predicted top 10 for this user?
                 hit = False
                 for movieID, predictedRating in topN[int(userID)]:
@@ -72,7 +72,7 @@ class Metrics:
         summation = 0
         total = 0
         # For each left-out rating
-        for userID, leftOutMovieID, actualRating, estimatedRating, _ in leftPredictions:
+        for userID, leftOutMovieID, actual, estimated, _ in leftPredictions:
             # Is it in the predicted top N for this user?
             hitRank = 0
             rank = 0

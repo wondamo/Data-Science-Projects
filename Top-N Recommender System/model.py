@@ -1,3 +1,4 @@
+from Data_split import Data
 from Movies import Movie
 from metrics import Metrics
 from surprise import SVD, KNNBaseline
@@ -5,12 +6,12 @@ from surprise.model_selection import train_test_split, LeaveOneOut
 
 
 mv = Movie()
-
+data = Data(mv)
 print("Loading Book ratings...")
-data = mv.load_movie_ratings()
+
 
 print("\nComputing movie popularity ranks so we can measure novelty later...")
-ranks = mv.getPopularityRanks()
+ranks = Data.rankings()
 
 print("\nComputing item similarities so we can measure diversity later...")
 FullSet = data.build_full_trainset()
