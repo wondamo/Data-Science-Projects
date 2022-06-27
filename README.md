@@ -26,8 +26,6 @@ The dataset used for this project is gotten from [Kaggle](https://www.kaggle.com
 * I built multiple recommender systems using different methods:
     * Collaborative Filtering
     * Matrix Factorization
-    * Deep Learning
-    * Hybrid
 * I evaluated all of them with:
     * RMSE
     * MAE

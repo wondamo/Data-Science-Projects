@@ -19,8 +19,6 @@ We have user-based and item-based Collaborative filtering methods. They both wor
 
 3. Matrix Factorization
 
-4. Hybrid
-
 Recommender systems works by predicting users ratings, but the aim is to generate that top-N recommendations
 So there are different ways to evaluate recommender systems, and these different ways involves different spliting of the data.  
 ### Metrics for evaluating Recommender Systems
