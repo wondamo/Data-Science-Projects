@@ -6,10 +6,10 @@ from collections import defaultdict
 
 class Movie:
     # store the paths to the files
-    ratings_file = 'C:/Users/Wonder/Data-Science-Projects/Top-N Recommender System/data/Dataset.csv'
-    movie_file = 'C:/Users/Wonder/Data-Science-Projects/Top-N Recommender System/data/Movie_Id_Titles.csv'
+    ratings_file = 'data/Dataset.csv'
+    movie_file = 'data/Movie_Id_Titles.csv'
 
-    def load_movie_ratings(self):
+    def load_ratings(self):
         self.movieID_to_name = {}
         self.name_to_movieID = {}
         # create ratings dataset
@@ -17,26 +17,12 @@ class Movie:
         ratingsDataset = Dataset.load_from_file(self.ratings_file, reader)
 
         file = pd.read_csv(self.movie_file)
+        print(file.info())
         for index, row in file.iterrows():
-            movieID = row['item_id']
-            moviename = row['title']
-            self.movieID_to_name[movieID] = moviename
-            self.name_to_movieID[moviename] = movieID
+            self.movieID_to_name[row['item_id']] = row['title']
+            self.name_to_movieID[row['title']] = row['item_id']
 
         return ratingsDataset
-    
-    def getPopularityRanks(self):
-        ratings = defaultdict(int)
-        rankings = defaultdict(int)
-        file = pd.read_csv(self.ratings_file)
-        for index, row in file.iterrows():
-            ratings[int(row['item_id'])] = +1
-
-        rank=1
-        for keys, ratings in sorted(ratings.items(), key=lambda x: x[1], reverse=True):
-            rankings[keys]=rank
-            rank+=1
-        return rankings
 
     def getmovieName(self, movieId):
         if movieId in self.movieID_to_name:

@@ -1,6 +1,4 @@
 # import libraries
-import random
-
 import numpy as np
 from surprise import SVD, SVDpp
 
