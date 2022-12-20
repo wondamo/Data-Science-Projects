@@ -20,17 +20,16 @@ Here I worked with E Commerce Customer Dataset gotten from [Kaggle](https://www.
 ### Top-N Recommender System
 <img src="https://editor.analyticsvidhya.com/uploads/88506recommendation%20system.png" width=307 height=165> <img src="https://cdn.lynda.com/course/5028662/5028662-1555021422396-16x9.jpg" width=307 height=165>
 
-Recommender systems in a very general way operate by suggesting the most likely thing a user want to receive next to a user. It helps companies in retaining customers on platforms, and increasing customer lifetime value. By looking at users history on your platform, you are able to profile them and give them recommendations based on that profile
+Recommender systems in a very general way operate by suggesting the most likely thing a user want to receive next to a user. By looking at users history on your platform, you are able to profile them and give them recommendations based on that profile
 
-The dataset used for this project is gotten from [Kaggle](https://www.kaggle.com/datasets/dev0914sharma/dataset)
-* I built multiple recommender systems using different methods:
-    * Collaborative Filtering
-    * Matrix Factorization
-* I evaluated all of them with:
-    * RMSE
-    * MAE
-    * Hit Rate
-    * Coverage, Diversity
+Two datasets were used for this project:
+1. [Movie Recommendation Dataset](https://www.kaggle.com/datasets/dev0914sharma/dataset) gotten from kaggle
+2. [Yelp Dataset](https://www.kaggle.com/datasets/yelp-dataset/yelp-dataset) gotten from kaggle
+
+I built a recommender system using matrix factorization on the first Dataset
+
+The second dataset is larger and so i used Apache Spark ALS to build it
+
 
 
 ### Demand Forecasting for retail products
