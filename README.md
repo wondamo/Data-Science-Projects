@@ -18,8 +18,6 @@ Here I worked with E Commerce Customer Dataset gotten from [Kaggle](https://www.
 * Finally, I built the model using Logistic Regression, KNN, Random Forest, Naive Bayes, and XGBoost
 
 ### Top-N Recommender System
-<img src="https://editor.analyticsvidhya.com/uploads/88506recommendation%20system.png" width=307 height=165> <img src="https://cdn.lynda.com/course/5028662/5028662-1555021422396-16x9.jpg" width=307 height=165>
-
 Recommender systems in a very general way operate by suggesting the most likely thing a user want to receive next to a user. By looking at users history on your platform, you are able to profile them and give them recommendations based on that profile
 
 Two datasets were used for this project:
