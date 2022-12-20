@@ -26,9 +26,7 @@ Two datasets were used for this project:
 1. [Movie Recommendation Dataset](https://www.kaggle.com/datasets/dev0914sharma/dataset) gotten from kaggle
 2. [Yelp Dataset](https://www.kaggle.com/datasets/yelp-dataset/yelp-dataset) gotten from kaggle
 
-I built a recommender system using matrix factorization on the first Dataset
-
-The second dataset is larger and so i used Apache Spark ALS to build it
+I built the recommender system using matrix factorization on the first Dataset, and I used Apache Spark Alternating Least Square for the second dataset, because it has more ratings
 
 
 
